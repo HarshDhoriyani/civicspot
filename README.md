@@ -80,7 +80,7 @@ VITE_API_URL=http://localhost:5000/api
 
 **Your Name**
 - GitHub: [@HarshDhoriyani](https://github.com/HarshDhoriyani)
-- LinkedIn: [Your Profile](https://www.linkedin.com/in/harshdhoriyani/)
+- LinkedIn: [Harsh Dhoriyani](https://www.linkedin.com/in/harshdhoriyani/)
 
 ## 📄 License
 
