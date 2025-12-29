@@ -1,24 +1,93 @@
-# 🏙️ CivicSpot
+# 🏙️ CivicSpot - Community Issue Reporting Platform
 
-A community platform connecting citizens and authorities to report, track, and resolve local issues with real-time updates.
+A full-stack web application that enables citizens to report local issues and helps authorities track and resolve them efficiently.
 
-## 🚀 Features
-- Report local issues (potholes, streetlights, garbage, power cuts)
-- Real-time tracking with map visualization
-- Role-based access (Citizens & Admin)
-- Image upload support
-- Status updates & notifications
+## ✨ Features
+
+- 🔐 User Authentication (JWT)
+- 📝 Report Issues with Images
+- 📍 Geolocation & Reverse Geocoding
+- 🗺️ Interactive Map View
+- 👍 Upvote & Comment System
+- 👨‍💼 Admin Dashboard
+- 🌙 Dark Mode Interface
+- 📱 Fully Responsive
 
 ## 🛠️ Tech Stack
-- **Frontend:** React + Vite
-- **Backend:** Node.js + Express
-- **Database:** MongoDB + Mongoose
-- **Auth:** JWT
-- **Maps:** Leaflet
-- **File Upload:** Cloudinary
+
+**Frontend:**
+- React 18
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+- Leaflet
+
+**Backend:**
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- JWT Authentication
+- Cloudinary (Image Upload)
+
+## 🚀 Live Demo
+
+- **Frontend:** https://civicspot.vercel.app/
+- **Backend API:** https://civicspot-api.onrender.com
 
 ## 📦 Installation
-Coming soon...
+
+### Prerequisites
+- Node.js v18+
+- MongoDB
+- Cloudinary Account
+
+### Backend Setup
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Fill in your environment variables
+npm run dev
+```
+
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## 🌐 Environment Variables
+
+### Backend (.env)
+```
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
+### Frontend (.env)
+```
+VITE_API_URL=http://localhost:5000/api
+```
 
 ## 👨‍💻 Author
-Harsh Dhoriyani
+
+**Your Name**
+- GitHub: [@HarshDhoriyani](https://github.com/HarshDhoriyani)
+- LinkedIn: [Your Profile](https://www.linkedin.com/in/harshdhoriyani/)
+
+## 📄 License
+
+MIT License
+
+## 🙏 Acknowledgments
+
+- OpenStreetMap for geocoding
+- Cloudinary for image hosting
+- All contributors who helped test the platform
