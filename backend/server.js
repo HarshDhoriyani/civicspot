@@ -12,12 +12,37 @@ connectDB();
 // Initialize Express
 const app = express();
 
-// Middleware
-const corsOptions = {
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+// CORS Configuration - FIXED FOR VERCEL
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'https://civicspot.vercel.app/',
+  'https://civicspot.vercel.app/',
+  // Add more if you have custom domain
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1 || origin.includes('vercel.app')) {
+      callback(null, true);
+    } else {
+      console.log('Blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
-};
-app.use(cors(corsOptions));
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range'],
+  maxAge: 600 // 10 minutes
+}));
+
+// Handle preflight requests
+app.options('*', cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
