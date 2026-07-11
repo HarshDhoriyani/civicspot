@@ -34,6 +34,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const registerAdmin = async (userData) => {
+    try {
+      const response = await authService.registerAdmin(userData);
+      setUser(response.data.user);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const login = async (credentials) => {
     try {
       const response = await authService.login(credentials);
@@ -58,6 +68,7 @@ export const AuthProvider = ({ children }) => {
     user,
     loading,
     register,
+    registerAdmin,
     login,
     logout,
     updateUser,

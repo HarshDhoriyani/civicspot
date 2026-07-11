@@ -46,8 +46,8 @@ exports.createIssue = async (req, res) => {
 
     // Handle uploaded images
     const images = req.files ? req.files.map(file => ({
-      url: file.path,
-      publicId: file.filename
+      url: file.secure_url || file.url || file.path,
+      publicId: file.public_id || file.filename
     })) : [];
 
     console.log('📸 Images:', images.length);

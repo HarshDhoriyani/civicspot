@@ -75,98 +75,106 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-civic-950 py-12 relative overflow-hidden">
+      <div className="hero-glow w-[500px] h-[500px] bg-teal-glow/10 top-[-100px] right-[-100px] animate-pulse-glow" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-          <p className="text-gray-600 mt-2">Manage and resolve community issues</p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-glow/10 border border-amber-glow/20 text-amber-light text-xs font-semibold mb-4">
+            🏛️ Government Portal
+          </div>
+          <h1 className="text-4xl font-display font-bold text-white">Admin Dashboard</h1>
+          <p className="text-slate-400 mt-2">Manage and resolve community issues</p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-          <div className="bg-linear-to-br from-gray-700 to-gray-900 rounded-lg shadow-lg p-6 text-center text-white">
-            <div className="text-3xl font-bold">{stats.total}</div>
-            <div className="text-sm mt-1 opacity-90">Total Issues</div>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+          <div className="stat-card">
+            <div className="text-3xl font-display font-bold text-white">{stats.total}</div>
+            <div className="text-xs font-semibold text-teal-light mt-1 uppercase tracking-wider">Total Issues</div>
           </div>
           
-          <div className="bg-linear-to-br from-yellow-400 to-yellow-600 rounded-lg shadow-lg p-6 text-center text-white">
-            <div className="text-3xl font-bold">{stats.pending}</div>
-            <div className="text-sm mt-1 opacity-90">Pending</div>
+          <div className="stat-card">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-amber-500/50" />
+            <div className="text-3xl font-display font-bold text-white">{stats.pending}</div>
+            <div className="text-xs font-semibold text-amber-light mt-1 uppercase tracking-wider">Pending</div>
           </div>
           
-          <div className="bg-linear-to-br from-blue-400 to-blue-600 rounded-lg shadow-lg p-6 text-center text-white">
-            <div className="text-3xl font-bold">{stats.inProgress}</div>
-            <div className="text-sm mt-1 opacity-90">In Progress</div>
+          <div className="stat-card">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-blue-500/50" />
+            <div className="text-3xl font-display font-bold text-white">{stats.inProgress}</div>
+            <div className="text-xs font-semibold text-blue-light mt-1 uppercase tracking-wider">In Progress</div>
           </div>
           
-          <div className="bg-linear-to-br from-green-400 to-green-600 rounded-lg shadow-lg p-6 text-center text-white">
-            <div className="text-3xl font-bold">{stats.resolved}</div>
-            <div className="text-sm mt-1 opacity-90">Resolved</div>
+          <div className="stat-card">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-green-500/50" />
+            <div className="text-3xl font-display font-bold text-white">{stats.resolved}</div>
+            <div className="text-xs font-semibold text-green-400 mt-1 uppercase tracking-wider">Resolved</div>
           </div>
           
-          <div className="bg-linear-to-br from-red-400 to-red-600 rounded-lg shadow-lg p-6 text-center text-white">
-            <div className="text-3xl font-bold">{stats.rejected}</div>
-            <div className="text-sm mt-1 opacity-90">Rejected</div>
+          <div className="stat-card">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-red-500/50" />
+            <div className="text-3xl font-display font-bold text-white">{stats.rejected}</div>
+            <div className="text-xs font-semibold text-red-400 mt-1 uppercase tracking-wider">Rejected</div>
           </div>
         </div>
 
         {/* Issues Table */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="px-6 py-4 bg-gray-50 border-b">
-            <h2 className="text-lg font-semibold text-gray-900">All Issues</h2>
+        <div className="glass-strong rounded-2xl overflow-hidden shadow-2xl">
+          <div className="px-6 py-5 border-b border-white/10 bg-white/5">
+            <h2 className="text-lg font-semibold text-white">All Issues</h2>
           </div>
           
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+            <table className="min-w-full divide-y divide-white/5">
+              <thead className="bg-white/5">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     Issue
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     Category
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     Reporter
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     Date
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="divide-y divide-white/5">
                 {issues.map((issue) => {
                   const category = getCategoryInfo(issue.category, ISSUE_CATEGORIES);
                   const status = getStatusInfo(issue.status, ISSUE_STATUS);
                   
                   return (
-                    <tr key={issue._id} className="hover:bg-gray-50">
+                    <tr key={issue._id} className="hover:bg-white/5 transition-colors duration-200">
                       <td className="px-6 py-4">
-                        <Link to={`/issues/${issue._id}`} className="text-blue-600 hover:underline font-medium">
+                        <Link to={`/issues/${issue._id}`} className="text-teal-light hover:text-teal-glow font-medium transition">
                           {issue.title}
                         </Link>
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`${category.color} text-white px-2 py-1 rounded-full text-xs font-semibold`}>
+                        <span className={`badge ${category.color} bg-opacity-20 border border-current/20`}>
                           {category.icon} {category.label}
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`px-2 py-1 rounded-full text-xs font-semibold ${status.color}`}>
+                        <span className={`badge ${status.color} bg-opacity-20 border border-current/20`}>
                           {status.label}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 text-sm text-slate-300">
                         {issue.reportedBy?.name}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-500">
+                      <td className="px-6 py-4 text-sm text-slate-400">
                         {formatDate(issue.createdAt)}
                       </td>
                       <td className="px-6 py-4">
@@ -176,7 +184,7 @@ const AdminDashboard = () => {
                             setNewStatus(issue.status);
                             setRemarks('');
                           }}
-                          className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                          className="btn-amber px-3 py-1.5 text-xs"
                         >
                           Update Status
                         </button>
@@ -191,31 +199,37 @@ const AdminDashboard = () => {
 
         {/* Status Update Modal */}
         {selectedIssue && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Update Issue Status</h3>
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="glass-strong rounded-3xl shadow-2xl max-w-md w-full p-8 border border-white/10 animate-slide-in">
+              <h3 className="text-2xl font-display font-bold text-white mb-6">Update Issue Status</h3>
               
-              <div className="mb-4">
-                <p className="text-sm text-gray-600 mb-2">
-                  <strong>Issue:</strong> {selectedIssue.title}
+              <div className="mb-6 bg-white/5 rounded-xl p-4 border border-white/5">
+                <p className="text-sm text-slate-300 mb-2 flex flex-col gap-1">
+                  <span className="text-xs text-slate-500 uppercase tracking-wider">Issue</span>
+                  <span className="font-semibold text-white">{selectedIssue.title}</span>
                 </p>
-                <p className="text-sm text-gray-600">
-                  <strong>Current Status:</strong> {selectedIssue.status}
+                <p className="text-sm text-slate-300 flex flex-col gap-1 mt-3">
+                  <span className="text-xs text-slate-500 uppercase tracking-wider">Current Status</span>
+                  <span className="inline-block mt-1">
+                    <span className="badge bg-white/10 text-white border border-white/20">
+                      {getStatusInfo(selectedIssue.status, ISSUE_STATUS).label}
+                    </span>
+                  </span>
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-slate-300 mb-2">
                     New Status
                   </label>
                   <select
                     value={newStatus}
                     onChange={(e) => setNewStatus(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="input-field appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%24%2024%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:right_1rem_center] bg-[length:1em]"
                   >
                     {ISSUE_STATUS.map((status) => (
-                      <option key={status.value} value={status.value}>
+                      <option key={status.value} value={status.value} className="bg-civic-900 text-white">
                         {status.label}
                       </option>
                     ))}
@@ -223,32 +237,32 @@ const AdminDashboard = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-slate-300 mb-2">
                     Remarks (Optional)
                   </label>
                   <textarea
                     value={remarks}
                     onChange={(e) => setRemarks(e.target.value)}
                     rows="3"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Add any comments about this status change..."
+                    className="input-field resize-none"
+                    placeholder="Add official comments about this status change..."
                   />
                 </div>
               </div>
 
-              <div className="flex gap-3 mt-6">
+              <div className="flex gap-4 mt-8">
                 <button
                   onClick={() => setSelectedIssue(null)}
-                  className="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-semibold"
+                  className="flex-1 btn-secondary"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={() => handleStatusUpdate(selectedIssue._id)}
                   disabled={updating}
-                  className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold disabled:opacity-50"
+                  className="flex-1 btn-primary"
                 >
-                  {updating ? 'Updating...' : 'Update Status'}
+                  {updating ? 'Updating...' : 'Confirm Update'}
                 </button>
               </div>
             </div>

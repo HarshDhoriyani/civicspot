@@ -24,7 +24,6 @@ const Register = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    // Clear error when user starts typing
     if (error) setError('');
   };
 
@@ -32,34 +31,28 @@ const Register = () => {
     e.preventDefault();
     setError('');
 
-    // Validation
     if (!formData.name || formData.name.length < 2) {
       setError('Name must be at least 2 characters');
       return;
     }
-
     if (!validateEmail(formData.email)) {
       setError('Please enter a valid email address');
       return;
     }
-
     if (formData.password.length < 6) {
       setError('Password must be at least 6 characters');
       return;
     }
-
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       return;
     }
-
     if (!validatePhone(formData.phone)) {
       setError('Please enter a valid 10-digit phone number');
       return;
     }
 
     setLoading(true);
-
     try {
       const { confirmPassword, ...registerData } = formData;
       await register(registerData);
@@ -71,55 +64,55 @@ const Register = () => {
     }
   };
 
-  // Password strength indicator
   const getPasswordStrength = (password) => {
     if (!password) return { strength: 0, label: '', color: '' };
     if (password.length < 6) return { strength: 1, label: 'Weak', color: 'bg-red-500' };
-    if (password.length < 10) return { strength: 2, label: 'Medium', color: 'bg-yellow-500' };
-    return { strength: 3, label: 'Strong', color: 'bg-green-500' };
+    if (password.length < 10) return { strength: 2, label: 'Medium', color: 'bg-amber-500' };
+    return { strength: 3, label: 'Strong', color: 'bg-teal-500' };
   };
 
   const passwordStrength = getPasswordStrength(formData.password);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full">
-        {/* Card Container */}
-        <div className="bg-white rounded-2xl shadow-2xl p-8 space-y-6">
-          {/* Header */}
-          <div className="text-center">
+    <div className="min-h-screen bg-civic-950 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden noise-overlay">
+      {/* Background Glows */}
+      <div className="hero-glow w-[500px] h-[500px] bg-teal-glow/15 top-[-100px] left-[-100px] animate-pulse-glow" />
+      <div className="hero-glow w-[400px] h-[400px] bg-amber-glow/10 bottom-[-100px] right-[-100px] animate-float" />
+      <div className="absolute inset-0 bg-grid-pattern bg-[size:60px_60px] opacity-10 pointer-events-none" />
+
+      <div className="max-w-md w-full relative z-10 animate-fade-up">
+        <div className="glass-strong rounded-3xl p-8 shadow-2xl border border-white/10 relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-teal-glow/50 to-transparent" />
+
+          <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
-              <div className="bg-linear-to-br from-blue-100 to-purple-100 p-3 rounded-full">
-                <span className="text-4xl">🏙️</span>
+              <div className="w-16 h-16 bg-teal-glow/10 border border-teal-glow/20 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(20,184,166,0.15)]">
+                <span className="text-3xl">🚀</span>
               </div>
             </div>
-            <h2 className="text-3xl font-extrabold text-gray-900">
+            <h2 className="text-3xl font-display font-bold text-white">
               Join CivicSpot
             </h2>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-slate-400">
               Create your account and start making a difference
             </p>
           </div>
 
-          {/* Form */}
           <form className="space-y-5" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded animate-shake">
-                <div className="flex items-center">
-                  <span className="text-red-500 mr-2">⚠️</span>
-                  <p className="text-sm text-red-700">{error}</p>
-                </div>
+              <div className="bg-red-500/10 border border-red-500/30 p-4 rounded-xl flex items-start gap-3 animate-shake">
+                <span className="text-red-400 mt-0.5">⚠️</span>
+                <p className="text-sm text-red-300">{error}</p>
               </div>
             )}
 
-            {/* Name Field */}
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
                 Full Name
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-gray-400">👤</span>
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <span className="text-slate-500">👤</span>
                 </div>
                 <input
                   id="name"
@@ -128,20 +121,19 @@ const Register = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="input-field pl-11"
                   placeholder="John Doe"
                 />
               </div>
             </div>
 
-            {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
                 Email Address
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-gray-400">📧</span>
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <span className="text-slate-500">📧</span>
                 </div>
                 <input
                   id="email"
@@ -150,20 +142,19 @@ const Register = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="input-field pl-11"
                   placeholder="you@example.com"
                 />
               </div>
             </div>
 
-            {/* Phone Field */}
             <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="phone" className="block text-sm font-medium text-slate-300 mb-2">
                 Phone Number
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-gray-400">📱</span>
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <span className="text-slate-500">📱</span>
                 </div>
                 <input
                   id="phone"
@@ -172,21 +163,20 @@ const Register = () => {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="input-field pl-11"
                   placeholder="9876543210"
                   maxLength="10"
                 />
               </div>
             </div>
 
-            {/* Password Field */}
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
                 Password
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-gray-400">🔒</span>
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <span className="text-slate-500">🔒</span>
                 </div>
                 <input
                   id="password"
@@ -195,31 +185,27 @@ const Register = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="input-field pl-11 pr-12"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-white transition"
                 >
-                  <span className="text-gray-400 hover:text-gray-600">
-                    {showPassword ? '👁️' : '👁️‍🗨️'}
-                  </span>
+                  {showPassword ? '👁️' : '👁️‍🗨️'}
                 </button>
               </div>
-              
-              {/* Password Strength Indicator */}
               {formData.password && (
-                <div className="mt-2">
-                  <div className="flex items-center space-x-2">
-                    <div className="flex-1 bg-gray-200 rounded-full h-2">
+                <div className="mt-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex-1 bg-white/10 rounded-full h-1.5 overflow-hidden">
                       <div
-                        className={`h-2 rounded-full transition-all duration-300 ${passwordStrength.color}`}
+                        className={`h-full rounded-full transition-all duration-300 ${passwordStrength.color}`}
                         style={{ width: `${(passwordStrength.strength / 3) * 100}%` }}
                       ></div>
                     </div>
-                    <span className="text-xs font-medium text-gray-600">
+                    <span className="text-xs font-medium text-slate-400 w-12">
                       {passwordStrength.label}
                     </span>
                   </div>
@@ -227,14 +213,13 @@ const Register = () => {
               )}
             </div>
 
-            {/* Confirm Password Field */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-300 mb-2">
                 Confirm Password
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span className="text-gray-400">🔐</span>
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <span className="text-slate-500">🔐</span>
                 </div>
                 <input
                   id="confirmPassword"
@@ -243,30 +228,27 @@ const Register = () => {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="input-field pl-11 pr-12"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-white transition"
                 >
-                  <span className="text-gray-400 hover:text-gray-600">
-                    {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
-                  </span>
+                  {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
                 </button>
               </div>
               {formData.confirmPassword && formData.password !== formData.confirmPassword && (
-                <p className="mt-1 text-xs text-red-500">Passwords don't match</p>
+                <p className="mt-2 text-xs text-red-400">Passwords don't match</p>
               )}
             </div>
 
-            {/* Submit Button */}
             <div className="pt-2">
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-[1.02]"
+                className="w-full btn-primary py-3 text-base shadow-[0_0_30px_rgba(20,184,166,0.25)] hover:shadow-[0_0_50px_rgba(20,184,166,0.4)]"
               >
                 {loading ? (
                   <>
@@ -286,24 +268,24 @@ const Register = () => {
             </div>
           </form>
 
-          {/* Divider */}
-          <div className="relative pt-2">
+          <div className="relative mt-8 mb-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+              <div className="w-full border-t border-white/10"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Already have an account?</span>
+              <span className="px-4 bg-civic-900 text-slate-500 rounded-full border border-white/10">
+                Already have an account?
+              </span>
             </div>
           </div>
 
-          {/* Login Link */}
           <div className="text-center">
             <Link
               to="/login"
-              className="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition"
+              className="inline-flex items-center text-sm font-semibold text-teal-light hover:text-teal-glow transition group"
             >
               Sign in instead
-              <span className="ml-1">→</span>
+              <span className="ml-1 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </div>
         </div>

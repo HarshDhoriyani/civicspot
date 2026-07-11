@@ -212,103 +212,113 @@ const ReportIssue = () => {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4">✅</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Issue Reported Successfully!</h2>
-          <p className="text-gray-600">Redirecting to issues page...</p>
+      <div className="min-h-screen bg-civic-950 flex items-center justify-center relative overflow-hidden">
+        <div className="hero-glow w-[500px] h-[500px] bg-teal-glow/15 top-1/4 left-1/4 animate-pulse-glow" />
+        <div className="text-center relative z-10 glass-strong p-12 rounded-3xl animate-fade-up">
+          <div className="text-6xl mb-6 animate-bounce">✅</div>
+          <h2 className="text-3xl font-display font-bold text-white mb-4">Issue Reported Successfully!</h2>
+          <p className="text-slate-400">Redirecting to issues page...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-civic-950 py-12 relative overflow-hidden">
+      <div className="hero-glow w-[600px] h-[600px] bg-teal-glow/10 top-[-200px] left-[-200px] animate-pulse-glow" />
+      <div className="hero-glow w-[500px] h-[500px] bg-amber-glow/5 bottom-[-100px] right-[-100px] animate-float" />
+      
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Report an Issue</h1>
-          <p className="text-gray-600 mt-2">Help improve your community by reporting local issues</p>
+        <div className="mb-10 text-center animate-fade-up">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-glow/10 border border-teal-glow/20 text-teal-light text-xs font-semibold mb-4">
+            📝 Create Report
+          </div>
+          <h1 className="text-4xl font-display font-bold text-white">Report an Issue</h1>
+          <p className="text-slate-400 mt-3 max-w-2xl mx-auto">Help improve your community by providing details about the local issue.</p>
         </div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="glass-strong rounded-3xl p-8 md:p-10 shadow-2xl border border-white/10 animate-fade-up stagger-1">
+          <form onSubmit={handleSubmit} className="space-y-8">
             {error && (
-              <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded animate-shake">
-                <div className="flex items-center">
-                  <span className="text-red-500 mr-2">⚠️</span>
-                  <p className="text-sm text-red-700">{error}</p>
-                </div>
+              <div className="bg-red-500/10 border border-red-500/30 p-4 rounded-xl flex items-start gap-3 animate-shake">
+                <span className="text-red-400 mt-0.5">⚠️</span>
+                <p className="text-sm text-red-300">{error}</p>
               </div>
             )}
 
             {/* Category Selection */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">
-                Category *
+              <label className="block text-sm font-medium text-slate-300 mb-4">
+                Select Category *
               </label>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {ISSUE_CATEGORIES.map((cat) => (
                   <button
                     key={cat.value}
                     type="button"
                     onClick={() => setFormData({ ...formData, category: cat.value })}
-                    className={`p-4 rounded-lg border-2 transition-all ${
+                    className={`p-5 rounded-2xl border-2 transition-all duration-300 ${
                       formData.category === cat.value
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-teal-500 bg-teal-500/10 text-white shadow-[0_0_20px_rgba(20,184,166,0.15)]'
+                        : 'border-white/10 bg-white/5 text-slate-400 hover:border-white/30 hover:bg-white/10'
                     }`}
                   >
-                    <div className="text-3xl mb-2">{cat.icon}</div>
-                    <div className="text-sm font-medium text-gray-900">{cat.label}</div>
+                    <div className="text-3xl mb-3">{cat.icon}</div>
+                    <div className="text-sm font-medium">{cat.label}</div>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Title */}
-            <div>
-              <label htmlFor="title" className="block text-sm font-semibold text-gray-700 mb-2">
-                Issue Title *
-              </label>
-              <input
-                id="title"
-                name="title"
-                type="text"
-                required
-                value={formData.title}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="e.g., Broken streetlight on Main Road"
-              />
-              <p className="mt-1 text-xs text-gray-500">{formData.title.length}/100 characters</p>
-            </div>
+            {/* Title & Description Grid */}
+            <div className="space-y-6">
+              <div>
+                <label htmlFor="title" className="block text-sm font-medium text-slate-300 mb-2">
+                  Issue Title *
+                </label>
+                <input
+                  id="title"
+                  name="title"
+                  type="text"
+                  required
+                  value={formData.title}
+                  onChange={handleChange}
+                  className="input-field"
+                  placeholder="e.g., Broken streetlight on Main Road"
+                />
+                <div className="flex justify-end mt-1">
+                  <span className="text-xs text-slate-500">{formData.title.length}/100</span>
+                </div>
+              </div>
 
-            {/* Description */}
-            <div>
-              <label htmlFor="description" className="block text-sm font-semibold text-gray-700 mb-2">
-                Description *
-              </label>
-              <textarea
-                id="description"
-                name="description"
-                required
-                value={formData.description}
-                onChange={handleChange}
-                rows="4"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Provide detailed information about the issue..."
-              />
-              <p className="mt-1 text-xs text-gray-500">{formData.description.length}/1000 characters</p>
+              <div>
+                <label htmlFor="description" className="block text-sm font-medium text-slate-300 mb-2">
+                  Description *
+                </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  required
+                  value={formData.description}
+                  onChange={handleChange}
+                  rows="4"
+                  className="input-field resize-none"
+                  placeholder="Provide detailed information about the issue..."
+                />
+                <div className="flex justify-end mt-1">
+                  <span className="text-xs text-slate-500">{formData.description.length}/1000</span>
+                </div>
+              </div>
             </div>
 
             {/* Location */}
             <div>
-              <label htmlFor="address" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="address" className="block text-sm font-medium text-slate-300 mb-2">
                 Location *
               </label>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   id="address"
                   name="address"
@@ -316,13 +326,13 @@ const ReportIssue = () => {
                   required
                   value={formData.location.address}
                   onChange={handleChange}
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Enter the address or location"
+                  className="input-field flex-1"
+                  placeholder="Enter the exact location"
                 />
                 <button
                   type="button"
                   onClick={getCurrentLocation}
-                  className="px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition whitespace-nowrap"
+                  className="btn-amber sm:w-auto w-full px-6 whitespace-nowrap"
                 >
                   📍 Use Current
                 </button>
@@ -340,18 +350,15 @@ const ReportIssue = () => {
 
             {/* Image Upload */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-slate-300 mb-3">
                 Upload Photos (Max 5)
               </label>
               
-              {/* Upload Button */}
               <div className="mb-4">
-                <label className="flex items-center justify-center w-full h-32 px-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 transition">
-                  <div className="text-center">
-                    <span className="text-4xl mb-2 block">📸</span>
-                    <span className="text-sm text-gray-600">Click to upload images</span>
-                    <span className="text-xs text-gray-400 block mt-1">PNG, JPG up to 5MB each</span>
-                  </div>
+                <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-white/20 rounded-2xl bg-white/5 cursor-pointer hover:border-teal-500/50 hover:bg-teal-500/5 transition-all duration-300 group">
+                  <span className="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">📸</span>
+                  <span className="text-sm font-medium text-slate-300">Click to upload images</span>
+                  <span className="text-xs text-slate-500 mt-1">PNG, JPG up to 5MB each</span>
                   <input
                     type="file"
                     multiple
@@ -364,40 +371,44 @@ const ReportIssue = () => {
 
               {/* Image Previews */}
               {imagePreviews.length > 0 && (
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                   {imagePreviews.map((preview, index) => (
-                    <div key={index} className="relative group">
+                    <div key={index} className="relative group rounded-xl overflow-hidden border border-white/10">
                       <img
                         src={preview}
                         alt={`Preview ${index + 1}`}
-                        className="w-full h-32 object-cover rounded-lg"
+                        className="w-full h-24 object-cover"
                       />
-                      <button
-                        type="button"
-                        onClick={() => removeImage(index)}
-                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
-                      >
-                        ×
-                      </button>
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <button
+                          type="button"
+                          onClick={() => removeImage(index)}
+                          className="w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors transform hover:scale-110"
+                        >
+                          ×
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
             </div>
 
+            <div className="divider-gradient !my-10" />
+
             {/* Submit Buttons */}
-            <div className="flex gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <button
                 type="button"
                 onClick={() => navigate('/issues')}
-                className="flex-1 px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-semibold"
+                className="btn-secondary flex-1 py-4"
               >
-                Cancel
+                Cancel Report
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 px-6 py-3 bg-linear-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-primary flex-1 py-4 text-base shadow-[0_0_30px_rgba(20,184,166,0.25)] hover:shadow-[0_0_50px_rgba(20,184,166,0.4)]"
               >
                 {loading ? (
                   <span className="flex items-center justify-center">
@@ -408,7 +419,7 @@ const ReportIssue = () => {
                     Submitting...
                   </span>
                 ) : (
-                  <>🚀 Report Issue</>
+                  <>🚀 Submit Report</>
                 )}
               </button>
             </div>
@@ -416,13 +427,15 @@ const ReportIssue = () => {
         </div>
 
         {/* Info Box */}
-        <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h3 className="font-semibold text-blue-900 mb-2">📝 Tips for reporting:</h3>
-          <ul className="text-sm text-blue-800 space-y-1">
-            <li>• Be specific and clear in your description</li>
-            <li>• Include photos if possible - they help authorities understand the issue</li>
-            <li>• Provide accurate location information</li>
-            <li>• One issue per report for better tracking</li>
+        <div className="mt-8 bg-blue-500/10 border border-blue-500/20 rounded-2xl p-6 backdrop-blur-sm animate-fade-up stagger-2">
+          <h3 className="font-semibold text-blue-400 mb-3 flex items-center gap-2">
+            <span className="text-xl">💡</span> Tips for a great report:
+          </h3>
+          <ul className="text-sm text-slate-300 space-y-2 ml-7 list-disc marker:text-blue-500/50">
+            <li>Be specific and clear in your description to help authorities understand the urgency.</li>
+            <li>Include multiple clear photos from different angles.</li>
+            <li>Ensure the location is as accurate as possible (use the location button).</li>
+            <li>Report one issue per submission for better tracking and faster resolution.</li>
           </ul>
         </div>
       </div>

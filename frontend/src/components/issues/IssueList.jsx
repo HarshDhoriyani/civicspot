@@ -8,10 +8,10 @@ const IssueList = ({ issues, loading }) => {
 
   if (!issues || issues.length === 0) {
     return (
-      <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg">
-        <div className="text-6xl mb-4">📭</div>
-        <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">No issues found</h3>
-        <p className="text-gray-500 dark:text-gray-400">Try adjusting your filters or be the first to report an issue!</p>
+      <div className="text-center py-16 glass-strong rounded-2xl border border-white/10">
+        <div className="text-6xl mb-6 animate-bounce">📭</div>
+        <h3 className="text-2xl font-display font-bold text-white mb-2">No issues found</h3>
+        <p className="text-slate-400 max-w-md mx-auto">Try adjusting your filters or be the first to report an issue in this area!</p>
       </div>
     );
   }

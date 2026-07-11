@@ -13,7 +13,7 @@ const generateToken = (id) => {
 // @access  Public
 exports.register = async (req, res) => {
   try {
-    const { name, email, password, phone, role } = req.body;
+    const { name, email, password, phone } = req.body;
 
     // Check if user already exists
     const userExists = await User.findOne({ email });
@@ -24,13 +24,13 @@ exports.register = async (req, res) => {
       });
     }
 
-    // Create user
+    // Create user (citizens only — admin accounts use /admin/register)
     const user = await User.create({
       name,
       email,
       password,
       phone,
-      role: role || 'citizen'
+      role: 'citizen'
     });
 
     // Generate token
@@ -182,6 +182,73 @@ exports.updateProfile = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error updating profile',
+      error: error.message
+    });
+  }
+};
+
+// @desc    Register government official (admin)
+// @route   POST /api/auth/admin/register
+// @access  Public (requires admin access code)
+exports.registerAdmin = async (req, res) => {
+  try {
+    const { name, email, password, phone, department, officialId, adminAccessCode } = req.body;
+
+    if (!adminAccessCode || adminAccessCode !== process.env.ADMIN_ACCESS_CODE) {
+      return res.status(403).json({
+        success: false,
+        message: 'Invalid government access code'
+      });
+    }
+
+    if (!department || !officialId) {
+      return res.status(400).json({
+        success: false,
+        message: 'Department and official ID are required'
+      });
+    }
+
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({
+        success: false,
+        message: 'An account already exists with this email'
+      });
+    }
+
+    const user = await User.create({
+      name,
+      email,
+      password,
+      phone,
+      department,
+      officialId,
+      role: 'admin'
+    });
+
+    const token = generateToken(user._id);
+
+    res.status(201).json({
+      success: true,
+      message: 'Official account registered successfully',
+      data: {
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          phone: user.phone,
+          role: user.role,
+          department: user.department,
+          officialId: user.officialId,
+          avatar: user.avatar
+        },
+        token
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error registering official account',
       error: error.message
     });
   }

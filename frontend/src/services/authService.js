@@ -11,6 +11,16 @@ const authService = {
     return response.data;
   },
 
+  // Register government official
+  registerAdmin: async (userData) => {
+    const response = await api.post('/auth/admin/register', userData);
+    if (response.data.success) {
+      localStorage.setItem('token', response.data.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.data.user));
+    }
+    return response.data;
+  },
+
   // Login user
   login: async (credentials) => {
     const response = await api.post('/auth/login', credentials);

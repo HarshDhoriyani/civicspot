@@ -5,6 +5,8 @@ import ProtectedRoute from './components/common/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import AdminLogin from './pages/AdminLogin';
+import AdminRegister from './pages/AdminRegister';
 import Dashboard from './pages/Dashboard';
 import ReportIssue from './pages/ReportIssue';
 import IssueDetails from './pages/IssueDetails';
@@ -14,13 +16,15 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900">
+    <div className="flex flex-col min-h-screen bg-civic-950 text-white font-sans selection:bg-teal-glow/30">
       <Navbar />
       <main className="grow">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-register" element={<AdminRegister />} />
           <Route path="/issues" element={<Dashboard />} />
           <Route path="/issues/:id" element={<IssueDetails />} />
           

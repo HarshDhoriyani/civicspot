@@ -33,6 +33,16 @@ const userSchema = new mongoose.Schema({
     enum: ['citizen', 'admin'],
     default: 'citizen'
   },
+  department: {
+    type: String,
+    trim: true,
+    maxlength: [100, 'Department cannot exceed 100 characters']
+  },
+  officialId: {
+    type: String,
+    trim: true,
+    maxlength: [50, 'Official ID cannot exceed 50 characters']
+  },
   avatar: {
     type: String,
     default: 'https://via.placeholder.com/150'

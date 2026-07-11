@@ -67,11 +67,11 @@ const IssueDetails = () => {
 
   if (!issue) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen bg-civic-950 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900">Issue not found</h2>
-          <button onClick={() => navigate('/issues')} className="mt-4 text-blue-600 hover:underline">
-            Go back to issues
+          <h2 className="text-2xl font-display font-bold text-white">Issue not found</h2>
+          <button onClick={() => navigate('/issues')} className="mt-4 text-teal-light hover:text-teal-glow transition-colors">
+            ← Go back to issues
           </button>
         </div>
       </div>
@@ -83,19 +83,20 @@ const IssueDetails = () => {
   const isUpvoted = issue.upvotes?.includes(user?.id);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-civic-950 py-12 relative overflow-hidden">
+      <div className="hero-glow w-[600px] h-[600px] bg-teal-glow/10 top-[-200px] left-[-200px] animate-pulse-glow" />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Back Button */}
         <button
           onClick={() => navigate('/issues')}
-          className="mb-6 flex items-center text-gray-600 hover:text-gray-900 transition"
+          className="mb-8 flex items-center text-slate-400 hover:text-white transition-colors text-sm font-medium"
         >
           <span className="mr-2">←</span>
           Back to Issues
         </button>
 
         {/* Main Card */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="glass-strong rounded-3xl shadow-2xl overflow-hidden border border-white/10">
           {/* Images */}
           {issue.images && issue.images.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 p-4">
@@ -111,72 +112,72 @@ const IssueDetails = () => {
           )}
 
           {/* Content */}
-          <div className="p-8">
+          <div className="p-8 md:p-10">
             {/* Header */}
-            <div className="flex items-start justify-between mb-6">
+            <div className="flex flex-col md:flex-row items-start justify-between gap-6 mb-8">
               <div className="flex-1">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className={`${category.color} text-white px-3 py-1 rounded-full text-sm font-semibold`}>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className={`badge ${category.color} bg-opacity-20 border border-current/20`}>
                     {category.icon} {category.label}
                   </span>
-                  <span className={`px-3 py-1 rounded-full text-sm font-semibold ${status.color}`}>
+                  <span className={`badge ${status.color} bg-opacity-20 border border-current/20`}>
                     {status.label}
                   </span>
                 </div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">{issue.title}</h1>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span>📅 {formatDateTime(issue.createdAt)}</span>
-                  <span>👤 {issue.reportedBy?.name}</span>
+                <h1 className="text-3xl md:text-4xl font-display font-bold text-white mb-3">{issue.title}</h1>
+                <div className="flex items-center gap-4 text-sm text-slate-400">
+                  <span className="flex items-center gap-1">📅 {formatDateTime(issue.createdAt)}</span>
+                  <span className="flex items-center gap-1">👤 {issue.reportedBy?.name}</span>
                 </div>
               </div>
 
               {/* Upvote Button */}
               <button
                 onClick={handleUpvote}
-                className={`flex flex-col items-center p-3 rounded-lg border-2 transition ${
+                className={`flex flex-col items-center justify-center min-w-[90px] p-4 rounded-2xl border transition-all duration-300 ${
                   isUpvoted
-                    ? 'border-blue-500 bg-blue-50 text-blue-600'
-                    : 'border-gray-300 hover:border-blue-500'
+                    ? 'border-teal-500/50 bg-teal-500/10 text-teal-light shadow-[0_0_15px_rgba(20,184,166,0.15)]'
+                    : 'border-white/10 bg-white/5 hover:border-white/30 hover:bg-white/10 text-slate-300'
                 }`}
               >
-                <span className="text-2xl">👍</span>
-                <span className="font-bold">{issue.upvoteCount || 0}</span>
-                <span className="text-xs">Upvotes</span>
+                <span className="text-2xl mb-1">👍</span>
+                <span className="font-display font-bold text-xl">{issue.upvoteCount || 0}</span>
+                <span className="text-[10px] uppercase tracking-wider font-semibold opacity-70">Upvotes</span>
               </button>
             </div>
 
             {/* Description */}
-            <div className="mb-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-2">Description</h2>
-              <p className="text-gray-700 leading-relaxed">{issue.description}</p>
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold text-white mb-3">Description</h2>
+              <p className="text-slate-300 leading-relaxed bg-white/5 border border-white/10 rounded-2xl p-5">{issue.description}</p>
             </div>
 
             {/* Location */}
-            <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-              <h2 className="text-lg font-semibold text-gray-900 mb-2">📍 Location</h2>
-              <p className="text-gray-700">{issue.location.address}</p>
+            <div className="mb-10">
+              <h2 className="text-lg font-semibold text-white mb-3">📍 Location</h2>
+              <p className="text-slate-300 bg-white/5 border border-white/10 rounded-2xl p-5">{issue.location.address}</p>
             </div>
 
             {/* Comments Section */}
-            <div className="border-t pt-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">
-                💬 Comments ({issue.comments?.length || 0})
+            <div className="border-t border-white/10 pt-8 mt-8">
+              <h2 className="text-xl font-display font-bold text-white mb-6">
+                💬 Discussion ({issue.comments?.length || 0})
               </h2>
 
               {/* Add Comment Form */}
               {isAuthenticated && (
-                <form onSubmit={handleCommentSubmit} className="mb-6">
+                <form onSubmit={handleCommentSubmit} className="mb-8">
                   <textarea
                     value={commentText}
                     onChange={(e) => setCommentText(e.target.value)}
-                    placeholder="Add a comment..."
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Join the discussion..."
+                    className="input-field resize-none mb-3"
                     rows="3"
                   />
                   <button
                     type="submit"
                     disabled={!commentText.trim() || submittingComment}
-                    className="mt-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+                    className="btn-primary"
                   >
                     {submittingComment ? 'Posting...' : 'Post Comment'}
                   </button>
@@ -187,21 +188,23 @@ const IssueDetails = () => {
               <div className="space-y-4">
                 {issue.comments && issue.comments.length > 0 ? (
                   issue.comments.map((comment, index) => (
-                    <div key={index} className="flex gap-3 p-4 bg-gray-50 rounded-lg">
-                      <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold shrink-0">
+                    <div key={index} className="flex gap-4 p-5 bg-white/5 border border-white/5 rounded-2xl transition-all duration-300 hover:bg-white/10">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-glow to-civic-500 flex items-center justify-center text-white font-bold shrink-0 shadow-lg">
                         {comment.user?.name?.charAt(0).toUpperCase()}
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="font-semibold text-gray-900">{comment.user?.name}</span>
-                          <span className="text-xs text-gray-500">{getTimeAgo(comment.createdAt)}</span>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="font-semibold text-white">{comment.user?.name}</span>
+                          <span className="text-xs text-slate-500">• {getTimeAgo(comment.createdAt)}</span>
                         </div>
-                        <p className="text-gray-700">{comment.text}</p>
+                        <p className="text-slate-300 text-sm leading-relaxed">{comment.text}</p>
                       </div>
                     </div>
                   ))
                 ) : (
-                  <p className="text-center text-gray-500 py-8">No comments yet. Be the first to comment!</p>
+                  <div className="text-center py-10 bg-white/5 border border-white/10 rounded-2xl">
+                    <p className="text-slate-400">No comments yet. Be the first to start the discussion!</p>
+                  </div>
                 )}
               </div>
             </div>

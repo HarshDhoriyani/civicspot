@@ -44,12 +44,16 @@ const Dashboard = () => {
   };
 
   return (
-    <div className='min-h-screen bg-gray-50 dark:bg-gray-900 py-8 transition-colors duration-300'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div className="min-h-screen bg-civic-950 py-12 relative overflow-hidden">
+        <div className="hero-glow w-[500px] h-[500px] bg-teal-glow/10 top-[-100px] right-[-100px] animate-pulse-glow" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/*Header*/}
-            <div className='mb-8'>
-                <h1 className='text-3xl font-bold text-gray-900 dark:text-white'>Community Issues</h1>
-                <p className='text-gray-600 dark:text-gray-400 mt-2'>Browse and track reported issues in your area</p>
+            <div className="mb-8">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-glow/10 border border-teal-glow/20 text-teal-light text-xs font-semibold mb-4">
+                  🌍 Explore Issues
+                </div>
+                <h1 className="text-4xl font-display font-bold text-white">Community Issues</h1>
+                <p className="text-slate-400 mt-2">Browse and track reported issues in your area</p>
             </div>
             {/*Filters*/}
             <IssueFilter filters={filters} onFilterChange={handleFilterChange}/>
@@ -58,21 +62,21 @@ const Dashboard = () => {
 
             {/* Pagination */}
             {totalPages > 1 && (
-                <div className='mt-8 flex justify-center gap-2'>
+                <div className="mt-12 flex justify-center gap-2">
                     <button
                         onClick={() => handlePageChange(filters.page - 1)}
                         disabled={filters.page === 1}
-                        className='px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'>
+                        className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-slate-300 hover:bg-white/10 hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium text-sm">
                         Previous
                     </button>
                 
-                <div className='flex gap-2'>
+                <div className="flex gap-2">
                     {[...Array(totalPages)].map((_, index) => (
                         <button 
                             key={index + 1}
                             onClick={() => handlePageChange(index + 1)}
-                            className={`px-4 py-2 rounded-lg ${
-                                filters.page === index + 1 ? 'bg-blue-600 text-white' : 'bg-white border border-gray-300 hover:bg-gray-50'
+                            className={`w-10 h-10 flex items-center justify-center rounded-lg font-medium text-sm transition-colors ${
+                                filters.page === index + 1 ? 'bg-teal-600 text-white shadow-[0_0_15px_rgba(20,184,166,0.3)]' : 'bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 hover:text-white'
                             }`}
                             >
                                 {index + 1}
@@ -83,7 +87,7 @@ const Dashboard = () => {
                 <button
                     onClick={() => handlePageChange(filters.page + 1)}
                     disabled={filters.page === totalPages}
-                    className='px-4 py-2 bg-white border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'
+                    className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-slate-300 hover:bg-white/10 hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium text-sm"
                 >
                     Next
                 </button>

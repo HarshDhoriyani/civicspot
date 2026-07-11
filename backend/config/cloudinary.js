@@ -1,4 +1,5 @@
 const cloudinary = require("cloudinary").v2;
+const cloudinaryRoot = require("cloudinary");
 const CloudinaryStorage = require("multer-storage-cloudinary");
 const multer = require("multer");
 
@@ -11,7 +12,7 @@ cloudinary.config({
 
 // Configure storage (v2 syntax)
 const storage = new CloudinaryStorage({
-  cloudinary,
+  cloudinary: cloudinaryRoot,
   folder: "civicspot",
   allowedFormats: ["jpg", "jpeg", "png", "gif", "webp"],
   transformation: [{ width: 1000, height: 1000, crop: "limit" }],
