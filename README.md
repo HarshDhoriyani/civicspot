@@ -65,7 +65,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 ```
 Start the backend server:
 ```bash
-npm run dev
+npm start
 # Server will run on http://localhost:5000
 ```
 
@@ -99,4 +99,3 @@ This project is licensed under the MIT License.
 
 - [OpenStreetMap](https://www.openstreetmap.org/) for geocoding and map tiles.
 - [Cloudinary](https://cloudinary.com/) for reliable image hosting.
-- Everyone who contributed to testing and building the platform!
