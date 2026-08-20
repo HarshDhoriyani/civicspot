@@ -92,7 +92,7 @@ const AdminLogin = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="input-field pr-12"
+                  className="input-field !pr-12"
                   placeholder="••••••••"
                 />
                 <button

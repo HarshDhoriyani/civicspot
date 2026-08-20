@@ -121,7 +121,7 @@ const Register = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="input-field pl-11"
+                  className="input-field !pl-11"
                   placeholder="John Doe"
                 />
               </div>
@@ -142,7 +142,7 @@ const Register = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="input-field pl-11"
+                  className="input-field !pl-11"
                   placeholder="you@example.com"
                 />
               </div>
@@ -163,7 +163,7 @@ const Register = () => {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="input-field pl-11"
+                  className="input-field !pl-11"
                   placeholder="9876543210"
                   maxLength="10"
                 />
@@ -185,7 +185,7 @@ const Register = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="input-field pl-11 pr-12"
+                  className="input-field !pl-11 !pr-12"
                   placeholder="••••••••"
                 />
                 <button
@@ -228,7 +228,7 @@ const Register = () => {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="input-field pl-11 pr-12"
+                  className="input-field !pl-11 !pr-12"
                   placeholder="••••••••"
                 />
                 <button

@@ -115,7 +115,7 @@ const Login = () => {
                   name="password" type={showPassword ? 'text' : 'password'} required
                   value={formData.password} onChange={handleChange}
                   placeholder="••••••••"
-                  className="input-field pr-12"
+                  className="input-field !pr-12"
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
                   className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-500 hover:text-white transition">
