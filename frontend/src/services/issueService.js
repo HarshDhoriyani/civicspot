@@ -8,6 +8,11 @@ const issueService = {
     return response.data;
   },
 
+  getPublicStats: async () => {
+    const response = await api.get('/issues/stats');
+    return response.data;
+  },
+
   // Get single issue
   getIssueById: async (id) => {
     const response = await api.get(`/issues/${id}`);

@@ -5,6 +5,7 @@ const { uploadMultiple, handleUploadError } = require('../middleware/upload');
 const {
   createIssue,
   getAllIssues,
+  getIssueStats,
   getIssueById,
   updateIssue,
   updateIssueStatus,
@@ -18,6 +19,7 @@ const {
 router.get('/user/my-issues', protect, getMyIssues);
 
 // Public routes
+router.get('/stats', getIssueStats);
 router.get('/', getAllIssues);
 
 // Protected routes
