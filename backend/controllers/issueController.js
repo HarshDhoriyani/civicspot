@@ -143,6 +143,29 @@ exports.getAllIssues = async (req, res) => {
   }
 };
 
+// @desc    Get public issue statistics
+// @route   GET /api/issues/stats
+// @access  Public
+exports.getIssueStats = async (req, res) => {
+  try {
+    const [totalIssues, resolvedIssues] = await Promise.all([
+      Issue.countDocuments({ isActive: true }),
+      Issue.countDocuments({ isActive: true, status: 'resolved' })
+    ]);
+
+    res.status(200).json({
+      success: true,
+      data: { totalIssues, resolvedIssues }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching issue statistics',
+      error: error.message
+    });
+  }
+};
+
 // @desc    Get single issue by ID
 // @route   GET /api/issues/:id
 // @access  Public
