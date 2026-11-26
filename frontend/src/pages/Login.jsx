@@ -43,7 +43,7 @@ const Login = () => {
         <Link to="/" className="flex items-center gap-3 relative z-10">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center"
             style={{ background: 'rgba(20,184,166,0.15)', border: '1px solid rgba(20,184,166,0.3)' }}>
-            <span className="text-xl">🏛️</span>
+            <span className="font-display text-xl font-bold text-teal-light">C</span>
           </div>
           <span className="font-display text-xl font-bold text-white">CivicSpot</span>
         </Link>
@@ -60,7 +60,7 @@ const Login = () => {
               <div key={item} className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
                   style={{ background: 'rgba(20,184,166,0.15)', border: '1px solid rgba(20,184,166,0.3)' }}>
-                  <span className="text-teal-glow text-xs">✓</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-glow" />
                 </div>
                 <span className="text-slate-400 text-sm">{item}</span>
               </div>
@@ -81,7 +81,7 @@ const Login = () => {
             <div className="lg:hidden flex items-center gap-3 mb-8">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center"
                 style={{ background: 'rgba(20,184,166,0.15)', border: '1px solid rgba(20,184,166,0.3)' }}>
-                <span>🏛️</span>
+                <span className="font-display font-bold text-teal-light">C</span>
               </div>
               <span className="font-display text-lg font-bold text-white">CivicSpot</span>
             </div>
@@ -92,7 +92,6 @@ const Login = () => {
           {error && (
             <div className="mb-6 p-4 rounded-xl flex items-start gap-3 animate-shake"
               style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.25)' }}>
-              <span className="text-red-400 shrink-0">⚠️</span>
               <p className="text-sm text-red-300">{error}</p>
             </div>
           )}
@@ -119,7 +118,7 @@ const Login = () => {
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
                   className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-500 hover:text-white transition">
-                  {showPassword ? '🙈' : '👁️'}
+                  {showPassword ? 'Hide' : 'Show'}
                 </button>
               </div>
             </div>
@@ -156,7 +155,7 @@ const Login = () => {
               </Link>
             </p>
             <Link to="/admin-login" className="block text-xs text-slate-600 hover:text-amber-light transition">
-              🏛️ Government official? Sign in here
+              Government official? Sign in here
             </Link>
           </div>
         </div>

@@ -16,20 +16,20 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-3 mb-5 group w-fit">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center"
                 style={{ background: 'linear-gradient(135deg, rgba(20,184,166,0.25), rgba(20,184,166,0.1))', border: '1px solid rgba(20,184,166,0.3)' }}>
-                <span className="text-xl">🏛️</span>
+                <span className="font-display text-xl font-bold text-teal-light">C</span>
               </div>
               <span className="font-display text-xl font-bold text-white">CivicSpot</span>
             </Link>
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-6">
               Bridging the gap between citizens and government — one issue at a time. Built for communities that believe in collective action.
             </p>
-            <div className="flex items-center gap-3">
-              {['📧', '📞'].map((icon, i) => (
-                <div key={i} className="w-9 h-9 rounded-xl flex items-center justify-center text-sm cursor-pointer hover:scale-110 transition-transform"
-                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                  {icon}
-                </div>
-              ))}
+            <div className="flex items-center gap-4 text-sm">
+              <a href="mailto:harshdhoriyani2005@gmail.com" className="text-slate-500 hover:text-teal-light transition-colors">
+                Email
+              </a>
+              <a href="tel:+917620821907" className="text-slate-500 hover:text-teal-light transition-colors">
+                Call
+              </a>
             </div>
           </div>
 
@@ -68,8 +68,8 @@ const Footer = () => {
                 </li>
               ))}
               <li className="pt-2">
-                <p className="text-slate-600 text-xs">📧 harshdhoriyani2005@gmail.com</p>
-                <p className="text-slate-600 text-xs mt-1">📞 +91 7620821907</p>
+                <p className="text-slate-600 text-xs">Email: harshdhoriyani2005@gmail.com</p>
+                <p className="text-slate-600 text-xs mt-1">Phone: +91 7620821907</p>
               </li>
             </ul>
           </div>

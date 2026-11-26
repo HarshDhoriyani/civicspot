@@ -62,7 +62,7 @@ const Navbar = () => {
                 boxShadow: '0 0 20px rgba(20,184,166,0.15)'
               }}
             >
-              <span className="text-lg">🏛️</span>
+              <span className="font-display text-lg font-bold text-teal-light">C</span>
             </div>
             <div>
               <span className="font-display text-lg font-bold text-white tracking-tight">CivicSpot</span>
@@ -72,7 +72,7 @@ const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map(({ to, label, isAdmin: adminLink }) => (
+            {navLinks.map(({ to, label }) => (
               <Link
                 key={to}
                 to={to}
@@ -84,7 +84,6 @@ const Navbar = () => {
                 onMouseEnter={e => { if (!isActive(to)) e.currentTarget.style.color = 'white'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
                 onMouseLeave={e => { if (!isActive(to)) { e.currentTarget.style.color = 'rgba(148,163,184,1)'; e.currentTarget.style.background = 'transparent'; } }}
               >
-                {adminLink && <span className="mr-1.5">⚡</span>}
                 {label}
                 {isActive(to) && (
                   <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-teal-glow" />
@@ -137,7 +136,7 @@ const Navbar = () => {
                   onMouseEnter={e => e.currentTarget.style.background = 'rgba(245,158,11,0.15)'}
                   onMouseLeave={e => e.currentTarget.style.background = 'rgba(245,158,11,0.08)'}
                 >
-                  🏛️ Official
+                  Official
                 </Link>
               </>
             )}
@@ -197,7 +196,7 @@ const Navbar = () => {
                 </Link>
                 <Link to="/admin-login" className="block text-center py-3 rounded-xl text-sm font-semibold text-amber-light"
                   style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)' }}>
-                  🏛️ Official Portal
+                  Official Portal
                 </Link>
               </div>
             )}

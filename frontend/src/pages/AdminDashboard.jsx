@@ -81,7 +81,7 @@ const AdminDashboard = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-glow/10 border border-amber-glow/20 text-amber-light text-xs font-semibold mb-4">
-            🏛️ Government Portal
+            Government Portal
           </div>
           <h1 className="text-4xl font-display font-bold text-white">Admin Dashboard</h1>
           <p className="text-slate-400 mt-2">Manage and resolve community issues</p>
@@ -163,7 +163,7 @@ const AdminDashboard = () => {
                       </td>
                       <td className="px-6 py-4">
                         <span className={`badge ${category.color} bg-opacity-20 border border-current/20`}>
-                          {category.icon} {category.label}
+                          {category.label}
                         </span>
                       </td>
                       <td className="px-6 py-4">

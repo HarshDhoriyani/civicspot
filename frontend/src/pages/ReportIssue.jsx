@@ -215,7 +215,7 @@ const ReportIssue = () => {
       <div className="min-h-screen bg-civic-950 flex items-center justify-center relative overflow-hidden">
         <div className="hero-glow w-[500px] h-[500px] bg-teal-glow/15 top-1/4 left-1/4 animate-pulse-glow" />
         <div className="text-center relative z-10 glass-strong p-12 rounded-3xl animate-fade-up">
-          <div className="text-6xl mb-6 animate-bounce">✅</div>
+          <div className="w-12 h-1 rounded-full bg-green-400 mx-auto mb-6" />
           <h2 className="text-3xl font-display font-bold text-white mb-4">Issue Reported Successfully!</h2>
           <p className="text-slate-400">Redirecting to issues page...</p>
         </div>
@@ -232,7 +232,7 @@ const ReportIssue = () => {
         {/* Header */}
         <div className="mb-10 text-center animate-fade-up">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-glow/10 border border-teal-glow/20 text-teal-light text-xs font-semibold mb-4">
-            📝 Create Report
+            Create Report
           </div>
           <h1 className="text-4xl font-display font-bold text-white">Report an Issue</h1>
           <p className="text-slate-400 mt-3 max-w-2xl mx-auto">Help improve your community by providing details about the local issue.</p>
@@ -243,7 +243,6 @@ const ReportIssue = () => {
           <form onSubmit={handleSubmit} className="space-y-8">
             {error && (
               <div className="bg-red-500/10 border border-red-500/30 p-4 rounded-xl flex items-start gap-3 animate-shake">
-                <span className="text-red-400 mt-0.5">⚠️</span>
                 <p className="text-sm text-red-300">{error}</p>
               </div>
             )}
@@ -265,7 +264,7 @@ const ReportIssue = () => {
                         : 'border-white/10 bg-white/5 text-slate-400 hover:border-white/30 hover:bg-white/10'
                     }`}
                   >
-                    <div className="text-3xl mb-3">{cat.icon}</div>
+                    <span className={`block w-3 h-3 rounded-full mx-auto mb-3 ${cat.color}`} />
                     <div className="text-sm font-medium">{cat.label}</div>
                   </button>
                 ))}
@@ -334,7 +333,7 @@ const ReportIssue = () => {
                   onClick={getCurrentLocation}
                   className="btn-amber sm:w-auto w-full px-6 whitespace-nowrap"
                 >
-                  📍 Use Current
+                  Use Current Location
                 </button>
               </div>
             </div>
@@ -356,7 +355,7 @@ const ReportIssue = () => {
               
               <div className="mb-4">
                 <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-white/20 rounded-2xl bg-white/5 cursor-pointer hover:border-teal-500/50 hover:bg-teal-500/5 transition-all duration-300 group">
-                  <span className="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">📸</span>
+                  <span className="w-10 h-10 mb-3 rounded-full border border-white/20 flex items-center justify-center text-2xl text-slate-300 group-hover:border-teal-400/50 transition-colors">+</span>
                   <span className="text-sm font-medium text-slate-300">Click to upload images</span>
                   <span className="text-xs text-slate-500 mt-1">PNG, JPG up to 5MB each</span>
                   <input
@@ -419,7 +418,7 @@ const ReportIssue = () => {
                     Submitting...
                   </span>
                 ) : (
-                  <>🚀 Submit Report</>
+                  <>Submit Report</>
                 )}
               </button>
             </div>
@@ -428,9 +427,7 @@ const ReportIssue = () => {
 
         {/* Info Box */}
         <div className="mt-8 bg-blue-500/10 border border-blue-500/20 rounded-2xl p-6 backdrop-blur-sm animate-fade-up stagger-2">
-          <h3 className="font-semibold text-blue-400 mb-3 flex items-center gap-2">
-            <span className="text-xl">💡</span> Tips for a great report:
-          </h3>
+          <h3 className="font-semibold text-blue-400 mb-3">Tips for a great report:</h3>
           <ul className="text-sm text-slate-300 space-y-2 ml-7 list-disc marker:text-blue-500/50">
             <li>Be specific and clear in your description to help authorities understand the urgency.</li>
             <li>Include multiple clear photos from different angles.</li>

@@ -48,7 +48,7 @@ const IssueFilter = ({ filters, onFilterChange }) => {
             <option value="" className="bg-civic-900">All Categories</option>
             {ISSUE_CATEGORIES.map((cat) => (
               <option key={cat.value} value={cat.value} className="bg-civic-900 text-white">
-                {cat.icon} {cat.label}
+                {cat.label}
               </option>
             ))}
           </select>

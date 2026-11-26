@@ -1,10 +1,10 @@
 export const ISSUE_CATEGORIES = [
-  { value: 'pothole', label: 'Pothole', icon: '🕳️', color: 'bg-orange-500' },
-  { value: 'streetlight', label: 'Street Light', icon: '💡', color: 'bg-yellow-500' },
-  { value: 'garbage', label: 'Garbage', icon: '🗑️', color: 'bg-green-500' },
-  { value: 'power_cut', label: 'Power Cut', icon: '⚡', color: 'bg-red-500' },
-  { value: 'water_supply', label: 'Water Supply', icon: '💧', color: 'bg-blue-500' },
-  { value: 'other', label: 'Other', icon: '📌', color: 'bg-gray-500' },
+  { value: 'pothole', label: 'Pothole', color: 'bg-orange-500' },
+  { value: 'streetlight', label: 'Street Light', color: 'bg-yellow-500' },
+  { value: 'garbage', label: 'Garbage', color: 'bg-green-500' },
+  { value: 'power_cut', label: 'Power Cut', color: 'bg-red-500' },
+  { value: 'water_supply', label: 'Water Supply', color: 'bg-blue-500' },
+  { value: 'other', label: 'Other', color: 'bg-gray-500' },
 ];
 
 export const ISSUE_STATUS = [

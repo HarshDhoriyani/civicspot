@@ -87,7 +87,7 @@ const Register = () => {
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
               <div className="w-16 h-16 bg-teal-glow/10 border border-teal-glow/20 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(20,184,166,0.15)]">
-                <span className="text-3xl">🚀</span>
+                <span className="font-display text-3xl font-bold text-teal-light">C</span>
               </div>
             </div>
             <h2 className="text-3xl font-display font-bold text-white">
@@ -101,7 +101,6 @@ const Register = () => {
           <form className="space-y-5" onSubmit={handleSubmit}>
             {error && (
               <div className="bg-red-500/10 border border-red-500/30 p-4 rounded-xl flex items-start gap-3 animate-shake">
-                <span className="text-red-400 mt-0.5">⚠️</span>
                 <p className="text-sm text-red-300">{error}</p>
               </div>
             )}
@@ -111,9 +110,6 @@ const Register = () => {
                 Full Name
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <span className="text-slate-500">👤</span>
-                </div>
                 <input
                   id="name"
                   name="name"
@@ -121,7 +117,7 @@ const Register = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="input-field !pl-11"
+                  className="input-field"
                   placeholder="John Doe"
                 />
               </div>
@@ -132,9 +128,6 @@ const Register = () => {
                 Email Address
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <span className="text-slate-500">📧</span>
-                </div>
                 <input
                   id="email"
                   name="email"
@@ -142,7 +135,7 @@ const Register = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="input-field !pl-11"
+                  className="input-field"
                   placeholder="you@example.com"
                 />
               </div>
@@ -153,9 +146,6 @@ const Register = () => {
                 Phone Number
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <span className="text-slate-500">📱</span>
-                </div>
                 <input
                   id="phone"
                   name="phone"
@@ -163,7 +153,7 @@ const Register = () => {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="input-field !pl-11"
+                  className="input-field"
                   placeholder="9876543210"
                   maxLength="10"
                 />
@@ -175,9 +165,6 @@ const Register = () => {
                 Password
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <span className="text-slate-500">🔒</span>
-                </div>
                 <input
                   id="password"
                   name="password"
@@ -185,15 +172,16 @@ const Register = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="input-field !pl-11 !pr-12"
+                  className="input-field !pr-12"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-white transition"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
-                  {showPassword ? '👁️' : '👁️‍🗨️'}
+                  {showPassword ? 'Hide' : 'Show'}
                 </button>
               </div>
               {formData.password && (
@@ -218,9 +206,6 @@ const Register = () => {
                 Confirm Password
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <span className="text-slate-500">🔐</span>
-                </div>
                 <input
                   id="confirmPassword"
                   name="confirmPassword"
@@ -228,15 +213,16 @@ const Register = () => {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="input-field !pl-11 !pr-12"
+                  className="input-field !pr-12"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-white transition"
+                  aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
                 >
-                  {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
+                  {showConfirmPassword ? 'Hide' : 'Show'}
                 </button>
               </div>
               {formData.confirmPassword && formData.password !== formData.confirmPassword && (
@@ -260,7 +246,6 @@ const Register = () => {
                   </>
                 ) : (
                   <>
-                    <span className="mr-2">✨</span>
                     Create Account
                   </>
                 )}

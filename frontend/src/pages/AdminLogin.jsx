@@ -44,7 +44,7 @@ const AdminLogin = () => {
         <div className="glass-strong rounded-3xl p-8 space-y-8 shadow-2xl">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-amber-glow/10 border border-amber-glow/20 mb-5">
-              <span className="text-3xl">🏛️</span>
+              <span className="font-display text-3xl font-bold text-amber-light">C</span>
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-glow/10 border border-amber-glow/20 text-amber-light text-xs font-semibold mb-4">
               Government Portal
@@ -99,8 +99,9 @@ const AdminLogin = () => {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-500 hover:text-slate-300"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
-                  {showPassword ? '🙈' : '👁️'}
+                  {showPassword ? 'Hide' : 'Show'}
                 </button>
               </div>
             </div>

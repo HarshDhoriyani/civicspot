@@ -94,7 +94,7 @@ const AdminRegister = () => {
         <div className="glass-strong rounded-3xl p-8 space-y-6 shadow-2xl">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-teal-glow/10 border border-teal-glow/20 mb-5">
-              <span className="text-3xl">🏛️</span>
+              <span className="font-display text-3xl font-bold text-teal-light">C</span>
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-glow/10 border border-teal-glow/20 text-teal-light text-xs font-semibold mb-4">
               Official Registration

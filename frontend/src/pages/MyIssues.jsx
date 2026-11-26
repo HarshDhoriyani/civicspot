@@ -54,7 +54,7 @@ const MyIssues = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-glow/10 border border-teal-glow/20 text-teal-light text-xs font-semibold mb-4">
-            👤 Personal Portal
+            Personal Portal
           </div>
           <h1 className="text-4xl font-display font-bold text-white">My Reported Issues</h1>
           <p className="text-slate-400 mt-2">Track the status of issues you've reported</p>
@@ -95,14 +95,13 @@ const MyIssues = () => {
         {/* Issues List */}
         {issues.length === 0 ? (
           <div className="glass-strong rounded-3xl shadow-2xl p-12 text-center border border-white/10">
-            <div className="text-6xl mb-6 animate-bounce">📭</div>
             <h3 className="text-2xl font-display font-bold text-white mb-3">No Issues Reported Yet</h3>
             <p className="text-slate-400 mb-8 max-w-md mx-auto">Start making a difference in your community by reporting your first issue!</p>
             <Link
               to="/report"
               className="btn-primary inline-flex py-3 px-8"
             >
-              🚀 Report Your First Issue
+              Report Your First Issue
             </Link>
           </div>
         ) : (

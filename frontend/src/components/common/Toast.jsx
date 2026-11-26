@@ -16,16 +16,9 @@ const Toast = ({ message, type = 'success', onClose, duration = 3000 }) => {
     info: 'bg-blue-500'
   };
 
-  const icons = {
-    success: '✅',
-    error: '❌',
-    warning: '⚠️',
-    info: 'ℹ️'
-  };
-
   return (
     <div className={`fixed top-4 right-4 ${bgColors[type]} text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2 animate-slide-in`}>
-      <span className="text-xl">{icons[type]}</span>
+      <span className="text-xs font-bold uppercase tracking-wider">{type}</span>
       <span>{message}</span>
       <button onClick={onClose} className="ml-2 text-white hover:text-gray-200">
         ×

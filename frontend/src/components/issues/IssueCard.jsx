@@ -54,11 +54,9 @@ const IssueCard = ({ issue }) => {
         ) : (
           <div className="relative h-48 shrink-0 flex items-center justify-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(17,29,51,0.8), rgba(10,17,32,0.9))' }}>
-            <div className="absolute inset-0 flex items-center justify-center opacity-10 text-9xl select-none">
-              {category.icon}
-            </div>
-            <span className="text-5xl relative z-10 opacity-60 group-hover:scale-110 transition-transform duration-300">
-              {category.icon}
+            <div className={`absolute inset-0 ${category.color} opacity-[0.08]`} />
+            <span className="relative z-10 text-lg font-semibold uppercase tracking-[0.2em] text-slate-400">
+              {category.label}
             </span>
             {/* Status badge */}
             <div className="absolute top-3 right-3">
@@ -76,7 +74,7 @@ const IssueCard = ({ issue }) => {
           <div className="flex items-center justify-between mb-3">
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full"
               style={{ background: 'rgba(20,184,166,0.08)', border: '1px solid rgba(20,184,166,0.15)', color: '#2dd4bf' }}>
-              {category.icon} {category.label}
+              {category.label}
             </span>
             <span className="text-xs text-slate-600">{formatDate(issue.createdAt)}</span>
           </div>
@@ -95,18 +93,16 @@ const IssueCard = ({ issue }) => {
           <div className="flex items-center justify-between pt-3"
             style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
             <div className="flex items-center gap-1.5 text-slate-500 text-xs max-w-[55%]">
-              <span className="text-teal-glow/70">📍</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-teal-glow/70 shrink-0" />
               <span className="truncate">{issue.location?.address}</span>
             </div>
 
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1 text-xs text-slate-500 hover:text-amber-light transition-colors">
-                <span>👍</span>
-                <span className="font-semibold">{issue.upvoteCount || 0}</span>
+                <span className="font-semibold">Upvotes {issue.upvoteCount || 0}</span>
               </div>
               <div className="flex items-center gap-1 text-xs text-slate-500 hover:text-teal-light transition-colors">
-                <span>💬</span>
-                <span className="font-semibold">{issue.comments?.length || 0}</span>
+                <span className="font-semibold">Comments {issue.comments?.length || 0}</span>
               </div>
             </div>
           </div>

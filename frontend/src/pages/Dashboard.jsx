@@ -50,7 +50,7 @@ const Dashboard = () => {
             {/*Header*/}
             <div className="mb-8">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-glow/10 border border-teal-glow/20 text-teal-light text-xs font-semibold mb-4">
-                  🌍 Explore Issues
+                  Explore Issues
                 </div>
                 <h1 className="text-4xl font-display font-bold text-white">Community Issues</h1>
                 <p className="text-slate-400 mt-2">Browse and track reported issues in your area</p>

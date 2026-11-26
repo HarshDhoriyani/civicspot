@@ -118,7 +118,7 @@ const IssueDetails = () => {
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
                   <span className={`badge ${category.color} bg-opacity-20 border border-current/20`}>
-                    {category.icon} {category.label}
+                    {category.label}
                   </span>
                   <span className={`badge ${status.color} bg-opacity-20 border border-current/20`}>
                     {status.label}
@@ -126,8 +126,8 @@ const IssueDetails = () => {
                 </div>
                 <h1 className="text-3xl md:text-4xl font-display font-bold text-white mb-3">{issue.title}</h1>
                 <div className="flex items-center gap-4 text-sm text-slate-400">
-                  <span className="flex items-center gap-1">📅 {formatDateTime(issue.createdAt)}</span>
-                  <span className="flex items-center gap-1">👤 {issue.reportedBy?.name}</span>
+                  <span>Reported {formatDateTime(issue.createdAt)}</span>
+                  <span>By {issue.reportedBy?.name}</span>
                 </div>
               </div>
 
@@ -140,7 +140,7 @@ const IssueDetails = () => {
                     : 'border-white/10 bg-white/5 hover:border-white/30 hover:bg-white/10 text-slate-300'
                 }`}
               >
-                <span className="text-2xl mb-1">👍</span>
+                <span className="text-sm font-semibold mb-1">Upvote</span>
                 <span className="font-display font-bold text-xl">{issue.upvoteCount || 0}</span>
                 <span className="text-[10px] uppercase tracking-wider font-semibold opacity-70">Upvotes</span>
               </button>
@@ -154,14 +154,14 @@ const IssueDetails = () => {
 
             {/* Location */}
             <div className="mb-10">
-              <h2 className="text-lg font-semibold text-white mb-3">📍 Location</h2>
+              <h2 className="text-lg font-semibold text-white mb-3">Location</h2>
               <p className="text-slate-300 bg-white/5 border border-white/10 rounded-2xl p-5">{issue.location.address}</p>
             </div>
 
             {/* Comments Section */}
             <div className="border-t border-white/10 pt-8 mt-8">
               <h2 className="text-xl font-display font-bold text-white mb-6">
-                💬 Discussion ({issue.comments?.length || 0})
+                Discussion ({issue.comments?.length || 0})
               </h2>
 
               {/* Add Comment Form */}
