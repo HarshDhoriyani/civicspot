@@ -117,8 +117,8 @@ exports.getAllIssues = async (req, res) => {
 
     // Execute query
     const issues = await Issue.find(query)
-      .populate('reportedBy', 'name email avatar')
-      .populate('assignedTo', 'name email')
+      .populate('reportedBy', 'name avatar')
+      .populate('assignedTo', 'name')
       .sort(sort)
       .skip(skip)
       .limit(parseInt(limit));
@@ -149,8 +149,8 @@ exports.getAllIssues = async (req, res) => {
 exports.getIssueById = async (req, res) => {
   try {
     const issue = await Issue.findById(req.params.id)
-      .populate('reportedBy', 'name email phone avatar')
-      .populate('assignedTo', 'name email')
+      .populate('reportedBy', 'name avatar')
+      .populate('assignedTo', 'name')
       .populate('comments.user', 'name avatar');
 
     if (!issue) {
